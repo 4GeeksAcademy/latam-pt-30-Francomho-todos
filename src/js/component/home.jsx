@@ -10,8 +10,8 @@ const Home = () => {
 				align-itmes-center 
 				text-center 
 				text-light 
-				fs-1 
-				fw-lighter">todos</h1>
+				fw-semibold
+				fs-1 ">todos</h1>
 				<Task/>	
 			</div>
 		</div>

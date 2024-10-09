@@ -33,14 +33,23 @@ export const Task = () => {
                 
                 value={inputValue}
                 />
+                {allTasks && allTasks.length === 0 && (
+                    <div className="alert alert-danger my-3" role="alert">
+                        There are no tasks, add one!
+                    </div>
+                )}
                 <ul className="list-group" data-bs-theme="dark">
                     {allTasks && allTasks.length > 0 && allTasks.map((task, index)=>{
                         return (
-                            <li key={index} className="list-group-item">
+                            <li 
+                            key={index} 
+                            className="list-group-item d-flex justify-content-between my-1"
+                            onMouseEnter={(e) => e.currentTarget.querySelector('.btn-close').classList.remove('d-none')}
+                            onMouseLeave={(e) => e.currentTarget.querySelector('.btn-close').classList.add('d-none')}>
                             {task.label}
                                  <button 
                                  type="button" 
-                                 className="btn-close" 
+                                 className="btn-close text-danger" 
                                  aria-label="Close"
                                  onClick={() => removeTask(index)}
                                  ></button>
@@ -48,15 +57,20 @@ export const Task = () => {
                         )
                     })}
                 </ul>
-                <div id="itemCounter" className="list-group 
-                form-text 
-                bg-secondary 
-                text-light 
-                p-1
-                m-1 
-                shadow-lg"
-                >
-                    COUNTER item left {counter}</div>
+                <div>
+                {counter !== 0 && (
+                    <div id="itemCounter" className="list-group 
+                    alert alert-dark
+                    form-text 
+                    bg-secondary 
+                    text-light 
+                    p-1
+                    my-3 
+                    shadow-lg"
+                    >
+                        COUNTER item left {counter}</div>
+                )}
+                </div>
         </div>
     )
 
